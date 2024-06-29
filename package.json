@@ -1,6 +1,6 @@
 {
-    "name": "typegram",
-    "version": "0.0.1",
+    "name": "scriptgram",
+    "version": "0.1.0.beta",
     "description": "",
     "main": "index.ts",
     "scripts": {
@@ -40,10 +40,10 @@
         "twilightjs-telegram-bot-api"
     ],
     "devDependencies": {
-        "@types/node": "^18.17.18",
+        "@types/node": "^18.19.39",
         "@typescript-eslint/eslint-plugin": "^6.7.2",
         "@typescript-eslint/parser": "^6.7.2",
-        "dotenv": "^16.3.1",
+        "dotenv": "^16.4.5",
         "eslint": "^8.50.0",
         "prettier": "3.0.3"
     }
