@@ -6,22 +6,22 @@ type FetchParams = {
   body: undefined | string | FormData;
 };
 
-type Args<T> = {
-  [P in keyof T]: T[P];
-};
+// type Args<T> = {
+//   [P in keyof T]: T[P];
+// };
 
-type ArgsStructure = {
-  params?: unknown;
+// type ArgsStructure<T> = {
+//   params?: T;
+//   inputFile?: { path: string; name: string };
+// };
+type Args<T> = {
+  params?: T;
   inputFile?: { path: string; name: string };
 };
-
 export class Bot {
   constructor(public readonly token: string) {}
 
-  async sendRequestToAPI<T extends ArgsStructure>(
-    telegramMethod: string,
-    args?: Args<T>
-  ) {
+  async sendRequestToAPI<T>(telegramMethod: string, args?: Args<T>) {
     const requestURI = `https://api.telegram.org/bot${this.token}/${telegramMethod}`;
     const fetchParams: FetchParams = {
       method: 'POST',
@@ -37,7 +37,7 @@ export class Bot {
         `Telegram request error ${response.error_code}: ${response.description}`
       );
     }
-    return response;
+    return response?.result;
   }
 
   private post(fetchParams: FetchParams, args: any | undefined) {
